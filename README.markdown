@@ -75,8 +75,9 @@ This is a basic example of some of the features. For full information on various
     results.offset         # 0
     results.previous_page  # nil
     results.next_page      # 2
-
-**Advanced Column Options**
+  
+  
+**Advanced Column Options:**
 
 *:filter*  
 Filter SQL sprintf string or a proc that accepts the valueand returns a sprintf string (default `"ILIKE '%%%s%%'"`).
