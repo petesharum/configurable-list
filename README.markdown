@@ -3,27 +3,19 @@ Configurable List
 
 Configurable List is a small library for creating and evaluating very flexible Postgres queries to back a user-configurable table. This is arguably "doing it wrong" and isn't likely to make it into production code. But it was an interesting exercise, so I'm hanging on to it for a while.
 
-**Features:**
+**Features:**  
+  Configurable columns  
+  Configurable column ordering  
+  Configurable joins required for columns or for other joins: Configurable List manages the dependencies and assembles the query correctly   
+  Configurable qualifiers  
+  Columns, joins and qualifiers can be determined at the class level or at runtime at the instance level  
+  Filters   
+  Sorts  
+  Paging  
 
-*  Configurable columns
+Subclasses ConfigurableList::List to define the behavior of a "Configurable List View." Columns, column ordering, sorts, filters and paging are supported.
 
-*  Configurable column ordering
-
-*  Configurable joins required for columns or for other joins: Configurable List manages the dependencies and assembles the query correctly 
-
-*  Configurable qualifiers 
-
-*  Columns, joins and qualifiers can be determined at the class level or at runtime at the instance level
-
-*  Filters 
-
-*  Sorts
-
-*  Paging 
-
-Subclasses of List can be created to define the behavior of a "Configurable List View." Columns, column ordering, sorts, filters and paging are supported.
-
-Columns, joins and qualifiers can be defined at the class or instance level. Once instantiated, an object of a List subclass type can be used to  retrieve list data or to supply configuration options to a list configuration UI. 
+Columns, joins and qualifiers can be defined at the class or instance level. Once instantiated, an object of a List subclass type can be used to retrieve list data or to supply configuration options to a list configuration UI. 
 
 Join dependencies can be specified with the :require_join property on any column, qualifier or join. Join dependency ordering is handled automatically. 
 
@@ -93,10 +85,10 @@ Filter SQL sprintf string or a proc that accepts the valueand returns a sprintf 
 By default columns support filters with an ILIKE clause. Specify filters with an array to declare a set of supported filters (to use in a `<SELECT>` element for example). Each element should be a hash:
 > `{ :value => '1', :condition => "<= 0", :human_name => "Overdue", :dislpay_suffix => "[12]" }` 
 
->  `:value` must be a string.  
->  `:condition` can be either a string qualifier or a proc that returns a string qualifier.  
->  `:human_name` is optional.  
->  `:display_suffix` is optional.  
+  `:value` must be a string.  
+  `:condition` can be either a string qualifier or a proc that returns a string qualifier.  
+  `:human_name` is optional.  
+  `:display_suffix` is optional.  
 An exception will be raised for filters do not meet data type requirements.
 
 *:disable_filter*  
